@@ -58,6 +58,19 @@ public class User {
     }
 
 
+    int loginuser(String username,String password){
+
+        for (int index = 0; index < listUser.size(); index ++){
+            if(username.matches(listUser.get(index).getUsername()) && password.matches(listUser.get(index).getPassword())){
+                System.out.println("Login With Success");
+                return 1;
+            }
+            System.out.println("Login Error....");
+        }
+        return 0;
+    }
+
+
 
     public void listallUser(){
 

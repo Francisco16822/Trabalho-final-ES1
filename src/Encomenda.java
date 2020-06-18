@@ -14,7 +14,9 @@ public class Encomenda extends Livro{
 
     private int idEncomenda;
     private String date;
-
+    private  String destinatario;
+    private String morada;
+    private int estado = 1; //1-por entregar 2- parcialmnente entregue 3- entregue
 
     List<Encomenda> listEncomenda = new ArrayList<Encomenda>();
     List<Livro> listLivronaencomenda = new ArrayList<Livro>();
@@ -23,11 +25,38 @@ public class Encomenda extends Livro{
 
     public Encomenda () {}
 
-    public Encomenda(int id, String date, ArrayList<Livro> listLivronaencomenda) {
+    public Encomenda(int id, String date, ArrayList<Livro> listLivronaencomenda, String destinatario, String morada, int estado) {
+        estado = 1; //1-por entregar 2- parcialmnente entregue 3- entregue
         this.idEncomenda = id;
         this.date = formattedDate;
         this.listLivronaencomenda=listLivronaencomenda;
+        this.destinatario=destinatario;
+        this.morada =morada;
+        this.estado=estado;
+    }
 
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public String getDestinatario() {
+        return destinatario;
+    }
+
+    public void setDestinatario(String destinatario) {
+        this.destinatario = destinatario;
+    }
+
+    public String getMorada() {
+        return morada;
+    }
+
+    public void setMorada(String morada) {
+        this.morada = morada;
     }
 
     public int getIdEncomenda() {
@@ -59,7 +88,7 @@ public class Encomenda extends Livro{
 
 
 
-    public int createOrder(int idEncomenda){
+    public int createOrder(int idEncomenda,String destinatario, String morada){
 
         Encomenda encomendatemp = new Encomenda();
         List<Livro> listTemp = new ArrayList<Livro>();
@@ -69,65 +98,86 @@ public class Encomenda extends Livro{
         encomendatemp.setdate();
         System.out.println("Encomenda com id " + idEncomenda+ " adicionada À lista de encomendas");
         encomendatemp.setlistLivronaencomenda((ArrayList<Livro>) listTemp);
+        encomendatemp.setDestinatario(destinatario);
+        encomendatemp.setMorada(morada);
         listEncomenda.add(encomendatemp);
 
         return 0;
     }
 
 
-public void listitensOrder(){
-
-        for(int index = 0; index < listLivronaencomenda.size();index++){
-
-
-
+    public void listitensOrder(Encomenda enc){
+        for(int index = 0; index < enc.getlistLivronaencomenda().size(); index++){
+            System.out.println(enc.getlistLivronaencomenda().get(index).getNome());
         }
 
+    }
 
-}
-    public int additensOrder(int idEncomenda, Livro livro){
+    public void emailnotificacaoencomendax(int id){
+        int preco = 0;
+        int estado = 0;
+        String morada = "";
+        String nome = "";
 
-        for (int index =0; index < listEncomenda.size(); index ++){
-
-            if(idEncomenda == listEncomenda.get(index).getIdEncomenda()){
-                for(int index2 = 0; index2 < listLivro.size();index2 ++) {
-                    if (livro.getNome() == listLivro.get(index2).getNome()) {
-
-                        listEncomenda.get(index).getlistLivronaencomenda().add(livro);
-
-                    }
+        System.out.println("Livros Pertencentes À encomenda com id: "+id);
+        for(int index =0;index < listEncomenda.size();index++){
+            if(listEncomenda.get(index).getIdEncomenda() == id){
+                for(int index2 = 0; index2 < listEncomenda.get(index).getlistLivronaencomenda().size(); index2++){
+                    System.out.println(listEncomenda.get(index).getlistLivronaencomenda().get(index2).getNome());
+                    preco = preco + listEncomenda.get(index).getlistLivronaencomenda().get(index2).getPreco();
+                    estado = listEncomenda.get(index).getEstado();
+                    morada = listEncomenda.get(index).getMorada();
+                    nome = listEncomenda.get(index).getDestinatario();
                 }
-            }}
+            }
 
+        }
+        System.out.println("/---------------- Fatura da encomenda enviada para o email "+ nome +"@gmail.com-----------------------------------/");
+        System.out.println("Livros Pertencentes À encomenda com id: "+id);
+        System.out.println("PREÇO DA ENCOMENDA: " + preco);
+        System.out.println("Morada da encomenda: " + morada);
+        System.out.println("Estado encomenda: " + estado + "sendo que 1- por entregar 2- parcialmente entregue 3- entregue");
+        System.out.println("/------------------------------------------/");
+    }
+
+
+
+    public int additensOrder(int idEncomenda, Livro livro, String nomelivro){
+
+        for (int index =0; index < listEncomenda.size(); index ++) {
+            if (idEncomenda == listEncomenda.get(index).getIdEncomenda()) {
+                for (int index2 = 0; index2 < livro.getalllivros().size(); index2++)
+                    if (livro.getalllivros().get(index2).getNome().matches(nomelivro)) {
+                        listEncomenda.get(index).getlistLivronaencomenda().add(livro.getalllivros().get(index2));
+                    }
+            }
+        }
         return 1;
     }
 
-    public void listallitensinorder(){
 
+    public void enviarencomenda(int id){
 
+        for(int index =0;index < listEncomenda.size();index++) {
+            if (listEncomenda.get(index).getIdEncomenda() == id) {
+                for (int index2 = 0; index2 < listEncomenda.get(index).getlistLivronaencomenda().size(); index2++) {
+                    System.out.println(listEncomenda.get(index).getlistLivronaencomenda().get(index2).getNome());
+                }
+            }
 
+        }
     }
 
     public void listallOrder(){
 
         int idtemp = 1;
-        Livro livrro =new Livro();
-        livrro.setNome("lusiadas");
-
+        System.out.println("/------------------- Lista de Encomendas feitas -------------------//");
         for (int index =0; index < listEncomenda.size(); index ++){
-            System.out.println("/------------------- Lista de Encomendas feitas -------------------//");
-            idtemp = listEncomenda.get(index).getIdEncomenda();
-            System.out.println(idtemp);
-            System.out.println(listEncomenda.get(index).getdate());
 
-
-            for(int index2 = 0; index2 < listEncomenda.get(index).getlistLivronaencomenda().size(); index2++){
-
-                System.out.println(listEncomenda.get(index).getlistLivronaencomenda().get(index2).getNome());
-            }
-
+            System.out.println("Id Encomenda:" + listEncomenda.get(index).getIdEncomenda() + ", Data Encomenda:" + listEncomenda.get(index).getdate() + ", Destinatario:" +listEncomenda.get(index).getDestinatario() + ", Morada Entrega: " +listEncomenda.get(index).getMorada());
+            System.out.println("Lista de livros na encomenda:");
+            listitensOrder(listEncomenda.get(index));
             System.out.println("/------------------------------------------------------------------//");
-
         }
 
 
