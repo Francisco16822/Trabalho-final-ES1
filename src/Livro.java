@@ -55,7 +55,7 @@ public class Livro {
     }
 
 
-    public int addLivro(String Nome, int QtdStk,int preco){
+    public Livro addLivro(String Nome, int QtdStk,int preco){
 
 
         for (int index = 0; index < listLivro.size(); index ++){
@@ -63,7 +63,7 @@ public class Livro {
             if(listLivro.get(index).getNome() == Nome){
 
                 System.out.println("Livro Já criado");
-                return 1;
+                return null;
 
             }
 
@@ -75,9 +75,9 @@ public class Livro {
         Livrotemp.setNome(Nome);
         Livrotemp.setQtdStk(QtdStk);
         Livrotemp.setPreco(preco);
-        System.out.println("Livro: "+ Nome + "    created with Sucess");
+        System.out.println("Livro: "+ Nome + " created with Sucess");
         listLivro.add(Livrotemp);
-        return 0;
+        return Livrotemp;
     }
 
     public void addstocklivro(int idlivro, int qtd){

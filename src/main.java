@@ -5,64 +5,85 @@ import java.util.Scanner;
 public class main {
 
     public static void main(String[] args) throws InterruptedException {
-
-        User test = new User();
-        Scanner scan = new Scanner(System.in);
-        Scanner scan2 = new Scanner(System.in);
+/*
+        user test = new user();
+        scanner scan = new scanner(system.in);
+        scanner scan2 = new scanner(system.in);
         int choice = 0;
-        String usernameScan="";
-        String passwordScan="";
-        String[] e = {};
-        test.CreateUser("tiago","12345");
-        test.CreateUser("joao","13232131");
-        test.CreateUser("joao","13232131");
-        test.CreateUser("joao","13232131");
-        test.CreateUser("joao","13232131");
-        test.CreateUser("joao","13232131");
-        test.CreateUser("joao","13232131");
+        string usernamescan="";
+        string passwordscan="";
+        string[] e = {};
+        test.createuser("tiago","12345");
+        test.createuser("joao","13232131");
+        test.createuser("joao","13232131");
+        test.createuser("joao","13232131");
+        test.createuser("joao","13232131");
+        test.createuser("joao","13232131");
+        test.createuser("joao","13232131");
 
-        User user = new User();
+        user user = new user();
 
         test.loginuser("tiago","12345");
 
 
 
-        test.listallUser();
+        test.listalluser();
 
 
-        Livro livrotest = new Livro();
-        Encomenda enc = new Encomenda();
-        Voucher vou = new Voucher();
+        livro livrotest = new livro();
+        encomenda enc = new encomenda();
+        voucher vou = new voucher();
 
 
-        livrotest.addLivro("lusiadas",10,10);
-        livrotest.addLivro("maias",10,5);
-        livrotest.addLivro("autobdc",15,7);
-        livrotest.listallLivros();
+        livrotest.addlivro("lusiadas",10,10);
+        livrotest.addlivro("maias",10,5);
+        livrotest.addlivro("autobdc",15,7);
+        livrotest.addlivro("autobdc",15,7);
+        livrotest.addlivro("autobdc",15,7);
+        livrotest.listalllivros();
 
 
-        enc.createOrder(1,"Joao","Viseu");
-        enc.createOrder(2,"Macaco","Aveiro");
-        enc.createOrder(3,"Urso","Guarda");
-        enc.additensOrder(1,livrotest,"maias");
-        enc.additensOrder(1,livrotest,"lusiadas");
-        enc.additensOrder(1,livrotest,"maias");
-        enc.additensOrder(2,livrotest,"maias");
-        enc.additensOrder(2,livrotest,"maias");
+        enc.createorder(1,"joao","viseu");
+        enc.createorder(2,"macaco","aveiro");
+        enc.createorder(3,"urso","guarda");
+        enc.additensorder(1,livrotest,"maias");
+        enc.additensorder(1,livrotest,"lusiadas");
+        enc.additensorder(1,livrotest,"maias");
+        enc.additensorder(2,livrotest,"maias");
+        enc.additensorder(2,livrotest,"maias");
         enc.emailnotificacaoencomendax(1);
-        //enc.listallOrder();
+        enc.emailnotificacaoencomendax(2);
+        enc.emailnotificacaoencomendax(3);
+        //enc.listallorder();
         vou.addvoucher("promoçao natal", 30);
         vou.addvoucher("promoçao primavera", 10);
-        vou.listallVouchers();
+        vou.listallvouchers();*/
 
-
-
-
-
-
-
+        Repositorio coco = new Repositorio();
 
 /*
+        Livro eieie = new Livro(5,"tiago",1,3);
+        Voucher vouvou = new Voucher().addvoucher("Pintocosta",100);
+        Encomenda enc = new Encomenda().createOrder(1,"tiago","viseu");
+        User usertest = new User().CreateUser("Valoodian","1234");
+
+        coco.adicionarencomenda(enc);
+        coco.adicionarlivro(eieie);
+        coco.adicionarVoucher(vouvou);
+        coco.adicionarUser(usertest);
+
+        coco.listarlivrorepo();
+        coco.listarVoucherrepo();
+        coco.listarEncomendarepo();
+        coco.listarUserrepo();
+
+        */
+        EnvioEncomenda teste = new EnvioEncomenda().CreateEnvioEncomenda(1,2,3);
+        coco.adicionarEnvioEncomenda(teste);
+        coco.listarEnvioEncomendaRepo();
+
+/*
+
         Livro testlivro =new Livro();
         testlivro.setNome("maias");
         testlivro.setQtdStk(10);
@@ -106,6 +127,9 @@ public class main {
 
 
 */
+
+
+
 
 
 

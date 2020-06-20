@@ -33,7 +33,7 @@ public class User {
         this.Password = Password;
     }
 
-    public int CreateUser(String Username, String Password){
+    public User CreateUser(String Username, String Password){
 
 
         for (int index =0; index < listUser.size(); index ++){
@@ -41,7 +41,7 @@ public class User {
             if(listUser.get(index).getUsername() == Username){
 
                 System.out.println("Usuário Repetido");
-                return 1;
+                return null;
 
             }
 
@@ -50,11 +50,9 @@ public class User {
         User usertest = new User();
         usertest.setUsername(Username);
         usertest.setPassword(Password);
-
         System.out.println("Username:"+ Username + "with SUCESS");
-
         listUser.add(usertest);
-        return 0;
+        return usertest;
     }
 
 

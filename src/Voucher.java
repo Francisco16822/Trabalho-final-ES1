@@ -12,10 +12,10 @@ public class Voucher {
 
     public Voucher () {}
 
-    public Voucher(int id, int desconto) {
+    public Voucher(int id, int desconto, String Nome) {
         this.id = id;
         this.desconto = desconto;
-
+        this.Nome=Nome;
 
     }
 
@@ -43,13 +43,13 @@ public class Voucher {
         this.id = id;
     }
 
-    public void addvoucher(String nome, int desconto){
-
+    public Voucher addvoucher(String nome, int desconto){
         Voucher teste= new Voucher();
+
         for(int index = 0; index < listaVoucher.size(); index ++) {
             if (listaVoucher.get(index).getNome().matches(nome)) {
                 System.out.println("Voucher com mesmo nome já criado.");
-                return;
+                return null;
             }
         }
 
@@ -58,6 +58,7 @@ public class Voucher {
         teste.setDesconto(desconto);
         listaVoucher.add(teste);
         lastId = lastId + 1;
+        return teste;
     }
 
     public void listallVouchers() {
@@ -67,6 +68,15 @@ public class Voucher {
             System.out.println("Id:" + listaVoucher.get(index).getId()+", Nome:" + listaVoucher.get(index).getNome()+", " + listaVoucher.get(index).getDesconto());
         }
     }
+/*
+    public void aplicarVoucher(Encomenda enc, String nomeVoucher){
+
+        for(int index =0; index < listaVoucher.size(); index ++) {
+            if (nomeVoucher.matches(listaVoucher.get(index).getNome())) {
+                enc.setDesconto(listaVoucher.get(index).getDesconto());
+            }
+        }
+    }*/
 }
 
 

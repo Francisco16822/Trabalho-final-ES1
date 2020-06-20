@@ -17,6 +17,8 @@ public class Encomenda extends Livro{
     private  String destinatario;
     private String morada;
     private int estado = 1; //1-por entregar 2- parcialmnente entregue 3- entregue
+    private int preco;
+    int desconto;
 
     List<Encomenda> listEncomenda = new ArrayList<Encomenda>();
     List<Livro> listLivronaencomenda = new ArrayList<Livro>();
@@ -25,7 +27,7 @@ public class Encomenda extends Livro{
 
     public Encomenda () {}
 
-    public Encomenda(int id, String date, ArrayList<Livro> listLivronaencomenda, String destinatario, String morada, int estado) {
+    public Encomenda(int id, String date, ArrayList<Livro> listLivronaencomenda, String destinatario, String morada, int estado, int preco,int deconto) {
         estado = 1; //1-por entregar 2- parcialmnente entregue 3- entregue
         this.idEncomenda = id;
         this.date = formattedDate;
@@ -33,7 +35,10 @@ public class Encomenda extends Livro{
         this.destinatario=destinatario;
         this.morada =morada;
         this.estado=estado;
+        this.preco = preco;
+        this.desconto = deconto;
     }
+
 
     public int getEstado() {
         return estado;
@@ -79,21 +84,14 @@ public class Encomenda extends Livro{
         return listLivronaencomenda;
     }
 
-    public void setlistLivronaencomenda(ArrayList<Livro> listLivronaencomenda) {
-        this.listLivronaencomenda = listLivronaencomenda;
-    }
+    public void setlistLivronaencomenda(ArrayList<Livro> listLivronaencomenda) {this.listLivronaencomenda = listLivronaencomenda; }
 
 
 
-
-
-
-    public int createOrder(int idEncomenda,String destinatario, String morada){
+    public Encomenda createOrder(int idEncomenda, String destinatario, String morada){
 
         Encomenda encomendatemp = new Encomenda();
         List<Livro> listTemp = new ArrayList<Livro>();
-
-
         encomendatemp.setIdEncomenda(idEncomenda);
         encomendatemp.setdate();
         System.out.println("Encomenda com id " + idEncomenda+ " adicionada À lista de encomendas");
@@ -101,9 +99,22 @@ public class Encomenda extends Livro{
         encomendatemp.setDestinatario(destinatario);
         encomendatemp.setMorada(morada);
         listEncomenda.add(encomendatemp);
-
-        return 0;
+        return encomendatemp;
     }
+
+
+    public Encomenda updateestadoencomenda(int id, int estado){
+
+        for(int index = 0; index < listEncomenda.size(); index ++){
+            if(listEncomenda.get(index).getIdEncomenda()==id){
+                return listEncomenda.get(index);
+            }
+        }
+        return null;
+    }
+
+
+    public List<Encomenda> returnallencomenda(){return listEncomenda;}
 
 
     public void listitensOrder(Encomenda enc){
@@ -114,10 +125,11 @@ public class Encomenda extends Livro{
     }
 
     public void emailnotificacaoencomendax(int id){
-        int preco = 0;
+
         int estado = 0;
         String morada = "";
         String nome = "";
+        preco =0;
 
         System.out.println("Livros Pertencentes À encomenda com id: "+id);
         for(int index =0;index < listEncomenda.size();index++){
@@ -137,8 +149,12 @@ public class Encomenda extends Livro{
         System.out.println("PREÇO DA ENCOMENDA: " + preco);
         System.out.println("Morada da encomenda: " + morada);
         System.out.println("Estado encomenda: " + estado + "sendo que 1- por entregar 2- parcialmente entregue 3- entregue");
-        System.out.println("/------------------------------------------/");
+        System.out.println("/------------------------------------------/ \n \n \n \n \n \n \n \n ");
     }
+
+
+
+
 
 
 
@@ -167,6 +183,8 @@ public class Encomenda extends Livro{
 
         }
     }
+
+
 
     public void listallOrder(){
 
