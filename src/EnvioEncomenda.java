@@ -69,17 +69,5 @@ public class EnvioEncomenda {
         this.date = date;
     }
 
-    public EnvioEncomenda CreateEnvioEncomenda(int idencomenda, int funcionarioId, int transportadoraId){
-        EnvioEncomenda EnvioEncTemp = new EnvioEncomenda();
-        lastid = lastid +1;
-        EnvioEncTemp.setId(lastid);
-        EnvioEncTemp.setDate(formattedDate);
-        EnvioEncTemp.setEncomendaId(idencomenda);
-        EnvioEncTemp.setFuncionarioId(funcionarioId);
-        EnvioEncTemp.setTransportadoraId(transportadoraId);
-        System.out.println("Encomenda created with SUCESS com Id" + lastid );
-        listEnviosEncomenda.add(EnvioEncTemp);
-        return EnvioEncTemp;
-    }
 
 }

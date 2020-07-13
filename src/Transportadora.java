@@ -33,28 +33,6 @@ public class Transportadora {
         this.nome = nome;
     }
 
-    public Transportadora CreateTransportadora(String nome){
-
-
-        for (int index =0; index < Transportadora.size(); index ++){
-
-            if(Transportadora.get(index).getNome() == nome){
-
-                System.out.println("Transportadora já criada");
-                return null;
-
-            }
-
-        }
-
-        Transportadora transportadoratemp = new Transportadora();
-        lastid = lastid +1;
-        transportadoratemp.setId(lastid);
-        transportadoratemp.setNome(nome);
-        System.out.println("Funcionario " + "with SUCESS com Id" + lastid );
-        Transportadora.add(transportadoratemp);
-        return transportadoratemp;
-    }
 
 }
 

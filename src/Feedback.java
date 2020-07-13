@@ -44,15 +44,5 @@ public class Feedback {
     }
 
 
-    public Feedback CreateFeedback(int idencomenda, int avaliacao){
-        Feedback feedbacktemp = new Feedback();
-        lastid = lastid +1;
-        feedbacktemp.setId(lastid);
-        feedbacktemp.setEncomendaId(idencomenda);
-        feedbacktemp.setAvaliacao(avaliacao);
-        System.out.println("Funcionario " + "with SUCESS com Id" + lastid );
-        listFeedback.add(feedbacktemp);
-        return feedbacktemp;
-    }
 
 }

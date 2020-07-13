@@ -34,43 +34,7 @@ public class Funcionario {
         this.Password = Password;
     }
 
-    public Funcionario CreateFuncionario(String Username, String Password){
 
-
-        for (int index =0; index < listFuncionario.size(); index ++){
-
-            if(listFuncionario.get(index).getUsername() == Username){
-
-                System.out.println("Usuário Repetido");
-                return null;
-
-            }
-        }
-        Funcionario Funcionariotest = new Funcionario();
-        Funcionariotest.setUsername(Username);
-        Funcionariotest.setPassword(Password);
-        System.out.println("Username:"+ Username + "with SUCESS");
-        listFuncionario.add(Funcionariotest);
-        return Funcionariotest;
-    }
-
-
-
-
-
-
-
-    public void listallUser(){
-
-        for (int index =0; index < listFuncionario.size(); index ++){
-
-            System.out.println(listFuncionario.get(index).getUsername());
-            System.out.println(listFuncionario.get(index).getPassword());
-
-        }
-
-
-    }
 
 
 

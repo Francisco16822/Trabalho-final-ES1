@@ -55,62 +55,7 @@ public class Livro {
     }
 
 
-    public Livro addLivro(String Nome, int QtdStk,int preco){
 
-
-        for (int index = 0; index < listLivro.size(); index ++){
-
-            if(listLivro.get(index).getNome() == Nome){
-
-                System.out.println("Livro Já criado");
-                return null;
-
-            }
-
-        }
-        Livro Livrotemp = new Livro();
-        lastId = lastId + 1;
-        Livrotemp.setId(lastId);
-        Livrotemp.setNome(Nome);
-        Livrotemp.setQtdStk(QtdStk);
-        Livrotemp.setPreco(preco);
-        System.out.println("Livro: "+ Nome + " created with Sucess");
-        listLivro.add(Livrotemp);
-        return Livrotemp;
-    }
-
-
-
-    public void addstocklivro(int idlivro, int qtd){
-        int temp;
-        for (int index =0; index < listLivro.size(); index ++) {
-            if (listLivro.get(index).getNome() == Nome) {
-                  temp = listLivro.get(index).getQtdStk();
-                  temp =temp + qtd;
-                  listLivro.get(index).setQtdStk(temp);
-            }
-        }
-    }
-
-
-
-    List<Livro> getalllivros(){
-        return listLivro;
-    }
-
-
-
-    public void listallLivros(){
-        System.out.println("/------------------- Lista de livros disponiveis-------------------//");
-        for (int index =0; index < listLivro.size(); index ++){
-
-            System.out.println("id," + listLivro.get(index).getId() + ", Nome:"+ listLivro.get(index).getNome() + " , Quantidade Stock:" +listLivro.get(index).getQtdStk() );
-
-
-        }
-        System.out.println("/------------------------------------------------------------------//");
-
-    }
 
 
 
