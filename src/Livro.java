@@ -68,7 +68,6 @@ public class Livro {
             }
 
         }
-
         Livro Livrotemp = new Livro();
         lastId = lastId + 1;
         Livrotemp.setId(lastId);
@@ -79,6 +78,8 @@ public class Livro {
         listLivro.add(Livrotemp);
         return Livrotemp;
     }
+
+
 
     public void addstocklivro(int idlivro, int qtd){
         int temp;
@@ -91,9 +92,12 @@ public class Livro {
         }
     }
 
+
+
     List<Livro> getalllivros(){
         return listLivro;
     }
+
 
 
     public void listallLivros(){

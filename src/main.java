@@ -6,7 +6,7 @@ public class main {
 
     public static void main(String[] args) throws InterruptedException {
 /*
-        user test = new user();
+        User test = new User();
         scanner scan = new scanner(system.in);
         scanner scan2 = new scanner(system.in);
         int choice = 0;
@@ -59,7 +59,7 @@ public class main {
         vou.addvoucher("promoçao primavera", 10);
         vou.listallvouchers();*/
 
-        Repositorio coco = new Repositorio();
+
 
 /*
         Livro eieie = new Livro(5,"tiago",1,3);
@@ -77,12 +77,13 @@ public class main {
         coco.listarEncomendarepo();
         coco.listarUserrepo();
 
-        */
+
+        Repositorio coco = new Repositorio();
         EnvioEncomenda teste = new EnvioEncomenda().CreateEnvioEncomenda(1,2,3);
         coco.adicionarEnvioEncomenda(teste);
         coco.listarEnvioEncomendaRepo();
 
-/*
+
 
         Livro testlivro =new Livro();
         testlivro.setNome("maias");
@@ -93,46 +94,86 @@ public class main {
         testlivro2.setNome("lusiadas");
         testlivro2.setQtdStk(10);
         testlivro2.setPreco(10);
-
-
-
         Encomenda enco = new Encomenda();
         enco.createOrder(1,"Joao","Viseu");
         enco.createOrder(2,"Macaco","Aveiro");
         enco.createOrder(3,"Urso","Guarda");
         enco.createOrder(4,"Paralelepipedo","Algarve");
-        enco.additensOrder(2,testlivro);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(2,testlivro2);
-        enco.additensOrder(3,testlivro);
-        enco.additensOrder(3,testlivro2);
-        enco.additensOrder(3,testlivro2);
-        enco.additensOrder(3,testlivro2);
-        enco.additensOrder(3,testlivro2);
-        enco.additensOrder(3,testlivro2);
-        enco.additensOrder(3,testlivro2);
-        enco.additensOrder(4,testlivro2);
-        enco.additensOrder(4,testlivro2);
-        enco.additensOrder(1,testlivro2);
-        enco.additensOrder(1,testlivro2);
-
-
-
+        enco.additensOrder(2,testlivro,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(2,testlivro2,"Joao");
+        enco.additensOrder(3,testlivro,"Joao");
+        enco.additensOrder(3,testlivro2,"Joao");
+        enco.additensOrder(3,testlivro2,"Joao");
+        enco.additensOrder(3,testlivro2,"Joao");
+        enco.additensOrder(3,testlivro2,"Joao");
+        enco.additensOrder(3,testlivro2,"JoaoJoao");
+        enco.additensOrder(3,testlivro2,"Joao");
+        enco.additensOrder(4,testlivro2,"Joao");
+        enco.additensOrder(4,testlivro2,"Joao");
+        enco.additensOrder(1,testlivro2,"Joao");
+        enco.additensOrder(1,testlivro2,"Joao");
+        enco.listallOrder();
+        testlivro.listallLivros();
 */
 
+        Repositorio repositorio = new Repositorio();Funcionario user1 = new Funcionario("Tiago", "1234");
+        Funcionario user2 = new Funcionario("Tiago", "123434");
+        Funcionario user3 = new Funcionario("Tiago", "12345");
+        repositorio.adicionarFuncionario(user1);
+        repositorio.adicionarFuncionario(user2);
+        repositorio.adicionarFuncionario(user3);
+        repositorio.listarFuncionario();
+        repositorio.loginFuncionario("Tiago","12");
+        repositorio.loginFuncionario("Tiago","12345");
+        Encomenda enco = new Encomenda(1, "12/05/2010", "Joao", "Viseu", 1,10);
+
+        Livro livro = new Livro(1,"Lusiadas",2,20);
+        repositorio.adicionarlivro(livro);
+        repositorio.adicionarencomenda(enco);
+        //repositorio.additensOrder(1,livro);
+        repositorio.emailnotificacaoencomendax(1);
+        //repositorio.updateestadoencomenda(1,2);
+        repositorio.emailnotificacaoencomendax(1);
+        Feedback feed1 = new Feedback(1,1,10);
+        repositorio.adicionarFeedback(feed1);
+        EntregaEncomenda entrega1 = new EntregaEncomenda(1,1,1,1);
+        repositorio.adicionarEntregaEncomenda(entrega1);
+        repositorio.listarEntregaEncomendaRepo();
+        repositorio.listarencomendasporenviar();
 
 
+        Voucher voucher1 = new Voucher(1,19,"Promoçãonatal");
+
+        repositorio.adicionarvoucheraencomenda(1,voucher1);
+
+        repositorio.adicionarlivroaencomenda(1,"Lusiadas",1);
+        repositorio.adicionarlivroaencomenda(1,"Lusiadas",1);
+        repositorio.listarencomendas();
+        repositorio.emailnotificacaoencomendax(1);
 
 
+        repositorio.listarlivrorepo();
+        repositorio.retirarstocklivros("Lusiadas",2);
+        repositorio.listarlivrorepo();
 
-        }
+        EnvioEncomenda envio1 = new EnvioEncomenda(1,1,1,1);
+        repositorio.adicionarEnvioEncomenda(envio1);
+
+        repositorio.listarEnvioEncomendaRepo();
+
+        repositorio.listarencomendasporenviar();
+        repositorio.listarEncomendarepo();
+
+
+    }
 }
 

@@ -3,7 +3,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EnvioEncomenda {
+public class EntregaEncomenda {
 
     LocalDateTime myDateObj = LocalDateTime.now();
     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -19,14 +19,14 @@ public class EnvioEncomenda {
     int lastid=0;
 
 
-    public EnvioEncomenda () {}
+    public EntregaEncomenda () {}
 
-    public EnvioEncomenda(int id ,int encomendaId, int funcionarioId,int transportadoraId) {
+    public EntregaEncomenda(int id ,int encomendaId, int funcionarioId,int transportadoraId) {
         this.id = id;
         this.encomendaId = encomendaId;
         this.funcionarioId=funcionarioId;
         this.transportadoraId=transportadoraId;
-        this.date = formattedDate;
+        this.date=formattedDate;
     }
 
     public int getId() {

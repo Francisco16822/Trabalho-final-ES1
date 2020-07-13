@@ -17,8 +17,9 @@ public class Encomenda extends Livro{
     private  String destinatario;
     private String morada;
     private int estado = 1; //1-por entregar 2- parcialmnente entregue 3- entregue
-    private int preco;
+    private int preco=0;
     int desconto;
+    Voucher voucher;
 
     List<Encomenda> listEncomenda = new ArrayList<Encomenda>();
     List<Livro> listLivronaencomenda = new ArrayList<Livro>();
@@ -27,16 +28,16 @@ public class Encomenda extends Livro{
 
     public Encomenda () {}
 
-    public Encomenda(int id, String date, ArrayList<Livro> listLivronaencomenda, String destinatario, String morada, int estado, int preco,int deconto) {
+    public Encomenda(int id, String date, String destinatario, String morada, int estado,int deconto) {
         estado = 1; //1-por entregar 2- parcialmnente entregue 3- entregue
         this.idEncomenda = id;
         this.date = formattedDate;
-        this.listLivronaencomenda=listLivronaencomenda;
         this.destinatario=destinatario;
         this.morada =morada;
         this.estado=estado;
         this.preco = preco;
         this.desconto = deconto;
+        this.voucher = null;
     }
 
 
@@ -84,23 +85,25 @@ public class Encomenda extends Livro{
         return listLivronaencomenda;
     }
 
-    public void setlistLivronaencomenda(ArrayList<Livro> listLivronaencomenda) {this.listLivronaencomenda = listLivronaencomenda; }
-
-
-
-    public Encomenda createOrder(int idEncomenda, String destinatario, String morada){
-
-        Encomenda encomendatemp = new Encomenda();
-        List<Livro> listTemp = new ArrayList<Livro>();
-        encomendatemp.setIdEncomenda(idEncomenda);
-        encomendatemp.setdate();
-        System.out.println("Encomenda com id " + idEncomenda+ " adicionada À lista de encomendas");
-        encomendatemp.setlistLivronaencomenda((ArrayList<Livro>) listTemp);
-        encomendatemp.setDestinatario(destinatario);
-        encomendatemp.setMorada(morada);
-        listEncomenda.add(encomendatemp);
-        return encomendatemp;
+    public Voucher getVoucher() {
+        return voucher;
     }
+
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
+    }
+
+    public void setlistLivronaencomenda(List<Livro> listLivronaencomenda) {this.listLivronaencomenda = listLivronaencomenda; }
+
+    public int getPreco() {
+        return preco;
+    }
+
+    public void setPreco(int preco) {
+        this.preco = preco;
+    }
+
+
 
 
     public Encomenda updateestadoencomenda(int id, int estado){
@@ -122,53 +125,6 @@ public class Encomenda extends Livro{
             System.out.println(enc.getlistLivronaencomenda().get(index).getNome());
         }
 
-    }
-
-    public void emailnotificacaoencomendax(int id){
-
-        int estado = 0;
-        String morada = "";
-        String nome = "";
-        preco =0;
-
-        System.out.println("Livros Pertencentes À encomenda com id: "+id);
-        for(int index =0;index < listEncomenda.size();index++){
-            if(listEncomenda.get(index).getIdEncomenda() == id){
-                for(int index2 = 0; index2 < listEncomenda.get(index).getlistLivronaencomenda().size(); index2++){
-                    System.out.println(listEncomenda.get(index).getlistLivronaencomenda().get(index2).getNome());
-                    preco = preco + listEncomenda.get(index).getlistLivronaencomenda().get(index2).getPreco();
-                    estado = listEncomenda.get(index).getEstado();
-                    morada = listEncomenda.get(index).getMorada();
-                    nome = listEncomenda.get(index).getDestinatario();
-                }
-            }
-
-        }
-        System.out.println("/---------------- Fatura da encomenda enviada para o email "+ nome +"@gmail.com-----------------------------------/");
-        System.out.println("Livros Pertencentes À encomenda com id: "+id);
-        System.out.println("PREÇO DA ENCOMENDA: " + preco);
-        System.out.println("Morada da encomenda: " + morada);
-        System.out.println("Estado encomenda: " + estado + "sendo que 1- por entregar 2- parcialmente entregue 3- entregue");
-        System.out.println("/------------------------------------------/ \n \n \n \n \n \n \n \n ");
-    }
-
-
-
-
-
-
-
-    public int additensOrder(int idEncomenda, Livro livro, String nomelivro){
-
-        for (int index =0; index < listEncomenda.size(); index ++) {
-            if (idEncomenda == listEncomenda.get(index).getIdEncomenda()) {
-                for (int index2 = 0; index2 < livro.getalllivros().size(); index2++)
-                    if (livro.getalllivros().get(index2).getNome().matches(nomelivro)) {
-                        listEncomenda.get(index).getlistLivronaencomenda().add(livro.getalllivros().get(index2));
-                    }
-            }
-        }
-        return 1;
     }
 
 
